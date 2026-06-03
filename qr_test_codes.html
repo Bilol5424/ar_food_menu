@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR-коды для теста — AR Food Menu</title>
+<style>
+  body{font-family:system-ui,Arial,sans-serif;background:#f6f4fb;margin:0;padding:24px;color:#222}
+  h1{color:#6B21A8;font-size:22px;text-align:center;margin:4px 0}
+  p.sub{text-align:center;color:#666;font-size:13px;margin:0 0 24px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;max-width:900px;margin:0 auto}
+  .card{background:#fff;border-radius:16px;padding:20px;text-align:center;box-shadow:0 6px 22px rgba(0,0,0,.07)}
+  .card h2{font-size:15px;margin:0 0 12px;color:#333}
+  .qr{display:inline-block}
+  code{display:block;margin-top:12px;background:#f0ecf7;padding:6px 8px;border-radius:6px;font-size:11px;word-break:break-all}
+  .note{max-width:900px;margin:24px auto 0;font-size:12px;color:#777;text-align:center}
+</style>
+</head>
+<body>
+  <h1>QR-коды для теста приложения</h1>
+  <p class="sub">Открой эту страницу на компьютере → в приложении нажми «Сканировать QR» → наведи камеру на любой код</p>
+  <div class="grid" id="grid"></div>
+  <p class="note">Демо-приложение принимает любой QR и открывает демо-меню, показывая отсканированное значение сверху. В продакшене каждый код будет вести на меню конкретного ресторана/стола.</p>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const codes = [
+      { title: "Demo Bistro",      text: "https://armenu.app/r/demo-bistro" },
+      { title: "Italiano Roma",    text: "https://armenu.app/r/italiano-roma" },
+      { title: "Sushi Tokyo",      text: "https://armenu.app/r/sushi-tokyo" },
+      { title: "Стол №12 (deep link)", text: "armenu://table/12" }
+    ];
+    const grid = document.getElementById("grid");
+    codes.forEach(c => {
+      const card = document.createElement("div");
+      card.className = "card";
+      const h = document.createElement("h2");
+      h.textContent = c.title;
+      const qr = document.createElement("div");
+      qr.className = "qr";
+      const code = document.createElement("code");
+      code.textContent = c.text;
+      card.appendChild(h); card.appendChild(qr); card.appendChild(code);
+      grid.appendChild(card);
+      new QRCode(qr, { text: c.text, width: 200, height: 200, colorDark:"#1a1aa8", colorLight:"#ffffff" });
+    });
+  </script>
+</body>
+</html>

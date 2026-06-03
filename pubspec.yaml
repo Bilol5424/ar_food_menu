@@ -15,9 +15,7 @@ dependencies:
   model_viewer_plus: ^1.9.3
   # QR scanning via the device camera.
   mobile_scanner: ^5.2.3
+  # Runtime camera permission handling.
+  permission_handler: ^11.3.1
 
-dev_dependencies:
-  flutter_lints: ^4.0.0
-
-flutter:
-  uses-material-design: true
+dev_depende
