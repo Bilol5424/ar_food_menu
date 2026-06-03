@@ -1,0 +1,23 @@
+name: ar_food_menu
+description: "AR/3D QR restaurant menu — demo app (Android first, iOS-ready)."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  # AR + 3D viewer: Google <model-viewer> inside Flutter.
+  # AR button launches Scene Viewer (Android) / Quick Look (iOS).
+  model_viewer_plus: ^1.9.3
+  # QR scanning via the device camera.
+  mobile_scanner: ^5.2.3
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
